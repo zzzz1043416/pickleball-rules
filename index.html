@@ -106,7 +106,7 @@
     .hero {
       width: min(1120px, calc(100% - 28px));
       margin: 0 auto;
-      padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+      padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3.5rem, 7vw, 5.5rem);
       display: grid;
       grid-template-columns: 1.08fr .92fr;
       gap: clamp(2rem, 5vw, 5rem);
@@ -243,44 +243,7 @@
 
     .kitchen.top { bottom: 50%; border-top: 3px solid white; }
     .kitchen.bottom { top: 50%; border-bottom: 3px solid white; }
-
-    .serve-path {
-      position: absolute;
-      inset: 8%;
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .serve-path svg { width: 100%; height: 100%; display: block; overflow: visible; }
-
-    .start-dot, .target-dot {
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 3px solid var(--ink);
-      z-index: 6;
-      box-shadow: 0 0 0 4px rgba(255,255,255,.55);
-    }
-
-    .start-dot { right: 18%; bottom: -2%; background: var(--orange); }
-    .target-dot { left: 21%; top: 18%; background: var(--pink); }
-
-    .start-label, .target-label {
-      position: absolute;
-      z-index: 6;
-      padding: .45rem .6rem;
-      border-radius: 12px;
-      border: 2px solid var(--ink);
-      background: white;
-      font-size: .78rem;
-      font-weight: 900;
-      line-height: 1.2;
-      box-shadow: 4px 4px 0 var(--ink);
-      max-width: 150px;
-    }
-
-    .start-label { right: -4%; bottom: 3%; transform: rotate(3deg); }
+.start-label { right: -4%; bottom: 3%; transform: rotate(3deg); }
     .target-label { left: 2%; top: 4%; transform: rotate(-4deg); }
 
     .floating-ball {
@@ -301,31 +264,7 @@
       animation: floatBall 3.5s ease-in-out infinite;
       z-index: 5;
     }
-
-    .hero-note {
-      position: absolute;
-      left: -10px;
-      bottom: 20px;
-      max-width: 190px;
-      padding: .8rem .95rem;
-      border: 2px solid var(--ink);
-      border-radius: 16px;
-      background: white;
-      box-shadow: 6px 6px 0 var(--orange);
-      font-weight: 900;
-      transform: rotate(-4deg);
-      z-index: 6;
-    }
-
-    .serve-caption {
-      margin-top: .85rem;
-      color: var(--muted);
-      font-size: .92rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    @keyframes floatBall {
+@keyframes floatBall {
       0%, 100% { transform: translateY(0) rotate(7deg); }
       50% { transform: translateY(-15px) rotate(-5deg); }
     }
@@ -781,6 +720,17 @@
     }
 
 
+    .bottom-community-section {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 1rem 0 3rem;
+    }
+
+    .bottom-community-section .community-stats {
+      max-width: none;
+      margin: 0;
+    }
+
     .community-stats {
       max-width: 940px;
       margin: 1.4rem auto 0;
@@ -933,6 +883,217 @@
 
     .toast.show { transform: translateY(0); }
 
+
+    .account-button {
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--ink);
+      padding: .58rem .85rem;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--ink);
+      white-space: nowrap;
+    }
+
+    .account-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      background: rgba(10, 20, 15, .66);
+      backdrop-filter: blur(8px);
+    }
+
+    .auth-overlay.open {
+      display: grid;
+    }
+
+    .auth-dialog {
+      position: relative;
+      width: min(100%, 470px);
+      max-height: calc(100vh - 2rem);
+      overflow-y: auto;
+      padding: 1.35rem;
+      border: 2px solid var(--ink);
+      border-radius: 28px;
+      background: white;
+      box-shadow: 12px 14px 0 var(--purple), var(--shadow);
+    }
+
+    .auth-close {
+      position: absolute;
+      right: .85rem;
+      top: .85rem;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #f7faf8;
+      color: var(--ink);
+      font-size: 1.2rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .auth-dialog h2 {
+      margin: .45rem 2.8rem .45rem 0;
+      font-size: clamp(2rem, 7vw, 3rem);
+    }
+
+    .auth-description {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .auth-form {
+      display: grid;
+      gap: .75rem;
+    }
+
+    .auth-field {
+      display: grid;
+      gap: .35rem;
+    }
+
+    .auth-field label {
+      font-size: .87rem;
+      font-weight: 900;
+    }
+
+    .auth-field input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfdfb;
+      color: var(--ink);
+      padding: .9rem 1rem;
+      outline: none;
+    }
+
+    .auth-field input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px rgba(108, 85, 232, .12);
+    }
+
+    .auth-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+      margin-top: .25rem;
+    }
+
+    .auth-actions button,
+    .signed-in-actions button,
+    .resume-progress-button {
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      padding: .82rem .9rem;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .auth-primary {
+      background: var(--ink);
+      color: white;
+      box-shadow: 4px 4px 0 var(--green);
+    }
+
+    .auth-secondary {
+      background: white;
+      color: var(--ink);
+    }
+
+    .auth-link-button {
+      justify-self: start;
+      border: 0;
+      background: transparent;
+      color: var(--green-dark);
+      padding: .25rem 0;
+      font-weight: 850;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .auth-status {
+      min-height: 1.45rem;
+      margin: .8rem 0 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .auth-status.error {
+      color: #ad3158;
+      font-weight: 850;
+    }
+
+    .auth-status.success {
+      color: var(--green-dark);
+      font-weight: 850;
+    }
+
+    .signed-in-panel {
+      display: none;
+    }
+
+    .signed-in-panel.visible {
+      display: block;
+    }
+
+    .signed-in-card {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #f7faf8;
+    }
+
+    .signed-in-email {
+      display: block;
+      margin-bottom: .2rem;
+      font-size: 1.05rem;
+      font-weight: 950;
+      overflow-wrap: anywhere;
+    }
+
+    .saved-progress-summary {
+      margin: .75rem 0;
+      padding: .85rem;
+      border-left: 4px solid var(--green);
+      border-radius: 0 14px 14px 0;
+      background: #edf8f1;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .signed-in-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+    }
+
+    .resume-progress-button {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .sign-out-button {
+      background: white;
+      color: var(--ink);
+    }
+
+    .save-progress-note {
+      margin-top: .85rem;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
     @media (max-width: 960px) {
       .hero, .score-grid, .section-head, .quiz-shell, .step-slide {
         grid-template-columns: 1fr;
@@ -961,6 +1122,16 @@
 
     @media (max-width: 680px) {
       .nav-links { display: none; }
+
+      .account-button {
+        margin-left: auto;
+        font-size: .85rem;
+      }
+
+      .auth-actions,
+      .signed-in-actions {
+        grid-template-columns: 1fr;
+      }
       .hero-panel { min-height: 380px; }
       .court-card {
         width: 82%;
@@ -968,16 +1139,7 @@
         box-shadow: 11px 13px 0 var(--purple);
       }
       .floating-ball { width: 76px; height: 76px; }
-      .hero-note { left: 0; font-size: .83rem; }
-      .start-label, .target-label {
-        font-size: .7rem;
-        max-width: 112px;
-        padding: .35rem .5rem;
-      }
-      .start-label { right: -6%; bottom: 1%; }
-      .target-label { left: 0; top: 1%; }
-      .serve-caption { font-size: .84rem; }
-      .scoreboard { grid-template-columns: 1fr; }
+.scoreboard { grid-template-columns: 1fr; }
       .server-badge { order: -1; justify-self: center; }
       .score-section { box-shadow: 10px 11px 0 var(--lime); }
       .step-stage { min-height: 0; }
@@ -1020,8 +1182,13 @@
         <a href="#scoring">Scoring</a>
         <a href="#quiz">Quiz</a>
       </div>
+      <button class="account-button" id="accountButton" type="button" aria-haspopup="dialog">
+        Log in
+      </button>
     </nav>
   </div>
+  
+
 
   <main>
     <header class="hero" id="top">
@@ -1052,24 +1219,9 @@
             <div class="kitchen top"></div>
             <div class="kitchen bottom"></div>
           </div>
-          <div class="serve-path" aria-hidden="true">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-              <defs>
-                <marker id="serveArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#14211b"></path>
-                </marker>
-              </defs>
-              <line x1="83" y1="95" x2="28" y2="24" stroke="#ffffff" stroke-width="2.8" stroke-dasharray="6 5" marker-end="url(#serveArrow)"></line>
-            </svg>
-            <span class="start-dot"></span>
-            <span class="target-dot"></span>
-            <div class="start-label">Start here<br>right side</div>
-            <div class="target-label">Serve diagonally<br>to this box</div>
-          </div>
+          
         </div>
         <div class="floating-ball" aria-hidden="true"></div>
-        <div class="hero-note">Serve diagonally. Start on the right when your score is even. Let it bounce twice.</div>
-        <div class="serve-caption">For a normal start, serve from the right side across the court into the opposite service box.</div>
       </div>
     </header>
 
@@ -1501,11 +1653,65 @@
         </div>
       </div>
 
-      <div class="community-stats" aria-labelledby="communityStatsTitle">
+      
+    </section>
+  </main>
+
+  <div class="auth-overlay" id="authOverlay" role="presentation">
+    <section class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="auth-close" id="authClose" type="button" aria-label="Close account window">×</button>
+
+      <div id="signedOutPanel">
+        <span class="eyebrow">Save your learning</span>
+        <h2 id="authTitle">Log in and continue later.</h2>
+        <p class="auth-description">
+          Create an account to save your lesson step and quiz progress across devices.
+        </p>
+
+        <form class="auth-form" id="authForm">
+          <div class="auth-field">
+            <label for="authEmail">Email address</label>
+            <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
+
+          <div class="auth-field">
+            <label for="authPassword">Password</label>
+            <input id="authPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="At least 6 characters" />
+          </div>
+
+          <div class="auth-actions">
+            <button class="auth-primary" id="signInButton" type="button">Log in</button>
+            <button class="auth-secondary" id="createAccountButton" type="button">Create account</button>
+          </div>
+
+          <button class="auth-link-button" id="resetPasswordButton" type="button">Forgot password?</button>
+        </form>
+      </div>
+
+      <div class="signed-in-panel" id="signedInPanel">
+        <span class="eyebrow">Account connected</span>
+        <h2>Your progress is saved.</h2>
+        <div class="signed-in-card">
+          <span class="signed-in-email" id="signedInEmail"></span>
+          <p class="saved-progress-summary" id="savedProgressSummary">Loading your saved progress…</p>
+          <div class="signed-in-actions">
+            <button class="resume-progress-button" id="resumeProgressButton" type="button">Continue lesson</button>
+            <button class="sign-out-button" id="signOutButton" type="button">Log out</button>
+          </div>
+        </div>
+        <p class="save-progress-note">Progress is saved after every lesson step and quiz question.</p>
+      </div>
+
+      <p class="auth-status" id="authStatus" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <section class="bottom-community-section" aria-label="Community results">
+    <div class="community-stats" aria-labelledby="communityStatsTitle">
         <div class="community-stats-head">
           <div>
-            <h3 id="communityStatsTitle">Community results</h3>
-            <p>Anonymous totals displayed directly on this website.</p>
+            <h3 id="communityStatsTitle">Pickleball learning community</h3>
+            <p>See how many learners have visited and how the community performed on the quiz.</p>
           </div>
           <span class="live-badge">Near-live</span>
         </div>
@@ -1534,8 +1740,7 @@
           Connecting to community statistics…
         </p>
       </div>
-    </section>
-  </main>
+  </section>
 
   <footer>
     <strong>Pickleball Rules</strong><br>
@@ -1609,6 +1814,69 @@
 
     renderScore();
 
+    // Learning progress saved locally and, after login, in Firestore.
+    const LEARNING_PROGRESS_KEY = "pickleball_learning_progress_v1";
+
+    function readLocalLearningProgress() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(LEARNING_PROGRESS_KEY) || "{}");
+        return {
+          lessonStep: Number.isInteger(stored.lessonStep) ? stored.lessonStep : 0,
+          lessonComplete: Boolean(stored.lessonComplete),
+          quizIndex: Number.isInteger(stored.quizIndex) ? stored.quizIndex : 0,
+          quizScore: Number.isInteger(stored.quizScore) ? stored.quizScore : 0,
+          quizComplete: Boolean(stored.quizComplete),
+          bestQuizScore: Number.isInteger(stored.bestQuizScore) ? stored.bestQuizScore : 0
+        };
+      } catch (error) {
+        console.warn("Could not read local learning progress", error);
+        return {
+          lessonStep: 0,
+          lessonComplete: false,
+          quizIndex: 0,
+          quizScore: 0,
+          quizComplete: false,
+          bestQuizScore: 0
+        };
+      }
+    }
+
+    let savedLearningProgress = readLocalLearningProgress();
+
+    function clampNumber(value, minimum, maximum) {
+      return Math.min(maximum, Math.max(minimum, Number(value) || 0));
+    }
+
+    function getLearningProgressSnapshot() {
+      return {
+        lessonStep: clampNumber(currentStep, 0, stepSlides.length - 1),
+        lessonComplete: currentStep >= stepSlides.length - 1,
+        quizIndex: clampNumber(quizIndex, 0, quizData.length),
+        quizScore: clampNumber(quizScore, 0, quizData.length),
+        quizComplete: Boolean(quizCompleted),
+        bestQuizScore: Math.max(
+          clampNumber(savedLearningProgress.bestQuizScore, 0, quizData.length),
+          quizCompleted ? clampNumber(quizScore, 0, quizData.length) : 0
+        )
+      };
+    }
+
+    function persistLearningProgress() {
+      const progress = getLearningProgressSnapshot();
+      savedLearningProgress = progress;
+      localStorage.setItem(LEARNING_PROGRESS_KEY, JSON.stringify(progress));
+
+      if (window.firebaseProgress) {
+        window.firebaseProgress.saveProgress(progress);
+      }
+
+      if (window.updateAccountProgressSummary) {
+        window.updateAccountProgressSummary(progress);
+      }
+    }
+
+    window.getLearningProgress = () => getLearningProgressSnapshot();
+
     // Guided lesson
     const stepSlides = $$(".step-slide");
     const stepDots = $$(".step-dot");
@@ -1616,7 +1884,7 @@
     const stepNext = $("#stepNext");
     const stepProgressFill = $("#stepProgressFill");
     const stepProgressText = $("#stepProgressText");
-    let currentStep = 0;
+    let currentStep = clampNumber(savedLearningProgress.lessonStep, 0, stepSlides.length - 1);
 
     function renderStep() {
       stepSlides.forEach((slide, index) => {
@@ -1642,7 +1910,9 @@
       if (currentStep < stepSlides.length - 1) {
         currentStep += 1;
         renderStep();
+        persistLearningProgress();
       } else {
+        persistLearningProgress();
         document.querySelector("#quiz").scrollIntoView({ behavior: "smooth" });
         showToast("Now test yourself.");
       }
@@ -1652,6 +1922,7 @@
       if (currentStep > 0) {
         currentStep -= 1;
         renderStep();
+        persistLearningProgress();
       }
     });
 
@@ -1659,10 +1930,9 @@
       dot.addEventListener("click", () => {
         currentStep = index;
         renderStep();
+        persistLearningProgress();
       });
     });
-
-    renderStep();
 
     // Quiz
     const quizData = [
@@ -1716,12 +1986,18 @@
       }
     ];
 
-    let quizIndex = 0;
-    let quizScore = 0;
+    let quizIndex = clampNumber(savedLearningProgress.quizIndex, 0, quizData.length);
+    let quizScore = clampNumber(savedLearningProgress.quizScore, 0, quizData.length);
+    let quizCompleted = Boolean(savedLearningProgress.quizComplete);
     let quizAnswered = false;
+
+    if (quizCompleted) {
+      quizIndex = quizData.length;
+    }
 
     function renderQuiz() {
       if (quizIndex >= quizData.length) {
+        quizCompleted = true;
         const pct = Math.round((quizScore / quizData.length) * 100);
         $("#quizNumber").textContent = "Complete";
         $("#quizScore").textContent = `Score: ${quizScore}/${quizData.length}`;
@@ -1737,6 +2013,8 @@
         $("#quizNext").style.display = "none";
         $("#quizProgress").style.width = "100%";
 
+        persistLearningProgress();
+
         if (window.firebaseStats) {
           window.firebaseStats.saveQuizResult(quizScore, quizData.length);
         }
@@ -1744,6 +2022,8 @@
         $("#restartQuiz").addEventListener("click", () => {
           quizIndex = 0;
           quizScore = 0;
+          quizCompleted = false;
+          persistLearningProgress();
           renderQuiz();
         });
         return;
@@ -1792,9 +2072,42 @@
 
     $("#quizNext").addEventListener("click", () => {
       quizIndex += 1;
+      persistLearningProgress();
       renderQuiz();
     });
 
+    window.applyLearningProgress = (progress) => {
+      if (!progress) return;
+
+      currentStep = clampNumber(progress.lessonStep, 0, stepSlides.length - 1);
+      quizCompleted = Boolean(progress.quizComplete);
+      quizIndex = quizCompleted
+        ? quizData.length
+        : clampNumber(progress.quizIndex, 0, quizData.length);
+      quizScore = clampNumber(progress.quizScore, 0, quizData.length);
+      savedLearningProgress = {
+        lessonStep: currentStep,
+        lessonComplete: Boolean(progress.lessonComplete),
+        quizIndex,
+        quizScore,
+        quizComplete: quizCompleted,
+        bestQuizScore: clampNumber(progress.bestQuizScore, 0, quizData.length)
+      };
+
+      localStorage.setItem(
+        LEARNING_PROGRESS_KEY,
+        JSON.stringify(savedLearningProgress)
+      );
+
+      renderStep();
+      renderQuiz();
+
+      if (window.updateAccountProgressSummary) {
+        window.updateAccountProgressSummary(savedLearningProgress);
+      }
+    };
+
+    renderStep();
     renderQuiz();
 
     function showToast(message) {
@@ -1811,7 +2124,13 @@
     import {
       getAuth,
       onAuthStateChanged,
-      signInAnonymously
+      signInAnonymously,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      signOut,
+      sendPasswordResetEmail,
+      EmailAuthProvider,
+      linkWithCredential
     } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
     import {
       getFirestore,
@@ -1847,10 +2166,157 @@
     const averageDetailElement = document.querySelector("#averageQuizDetail");
     const completionElement = document.querySelector("#quizCompletionCount");
 
+    const accountButton = document.querySelector("#accountButton");
+    const authOverlay = document.querySelector("#authOverlay");
+    const authClose = document.querySelector("#authClose");
+    const signedOutPanel = document.querySelector("#signedOutPanel");
+    const signedInPanel = document.querySelector("#signedInPanel");
+    const signedInEmail = document.querySelector("#signedInEmail");
+    const savedProgressSummary = document.querySelector("#savedProgressSummary");
+    const authEmail = document.querySelector("#authEmail");
+    const authPassword = document.querySelector("#authPassword");
+    const signInButton = document.querySelector("#signInButton");
+    const createAccountButton = document.querySelector("#createAccountButton");
+    const resetPasswordButton = document.querySelector("#resetPasswordButton");
+    const signOutButton = document.querySelector("#signOutButton");
+    const resumeProgressButton = document.querySelector("#resumeProgressButton");
+    const authStatus = document.querySelector("#authStatus");
+
     const configReady = !firebaseConfig.apiKey.startsWith("PASTE_");
     let currentUser = null;
     let pendingQuizResult = null;
     let refreshTimer = null;
+    let progressSaveTimer = null;
+
+    function setAuthStatus(message, type = "") {
+      authStatus.textContent = message;
+      authStatus.className = `auth-status ${type}`.trim();
+    }
+
+    function openAuthDialog() {
+      authOverlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      window.setTimeout(() => {
+        if (currentUser && !currentUser.isAnonymous) {
+          resumeProgressButton.focus();
+        } else {
+          authEmail.focus();
+        }
+      }, 0);
+    }
+
+    function closeAuthDialog() {
+      authOverlay.classList.remove("open");
+      document.body.style.overflow = "";
+      accountButton.focus();
+    }
+
+    function progressSummaryText(progress) {
+      const lessonNumber = Math.min(10, Number(progress?.lessonStep || 0) + 1);
+
+      if (progress?.quizComplete) {
+        return `Lesson complete. Best quiz score: ${progress.bestQuizScore || progress.quizScore || 0} / 8.`;
+      }
+
+      if (Number(progress?.quizIndex || 0) > 0) {
+        return `Lesson step ${lessonNumber} saved. Quiz question ${Math.min(8, Number(progress.quizIndex) + 1)} is next.`;
+      }
+
+      return `Your next lesson step is ${lessonNumber} of 10.`;
+    }
+
+    window.updateAccountProgressSummary = (progress) => {
+      savedProgressSummary.textContent = progressSummaryText(progress);
+    };
+
+    function updateAccountUI(user) {
+      const signedIn = Boolean(user && !user.isAnonymous);
+      signedOutPanel.style.display = signedIn ? "none" : "block";
+      signedInPanel.classList.toggle("visible", signedIn);
+
+      if (signedIn) {
+        accountButton.textContent = "My progress";
+        signedInEmail.textContent = user.email || "Signed-in learner";
+        window.updateAccountProgressSummary(window.getLearningProgress?.());
+      } else {
+        accountButton.textContent = "Log in";
+        signedInEmail.textContent = "";
+      }
+    }
+
+    function readableAuthError(error) {
+      const messages = {
+        "auth/email-already-in-use": "That email already has an account. Use Log in instead.",
+        "auth/credential-already-in-use": "That email already has an account. Use Log in instead.",
+        "auth/invalid-credential": "The email or password is incorrect.",
+        "auth/invalid-email": "Enter a valid email address.",
+        "auth/weak-password": "Use a stronger password with at least 6 characters.",
+        "auth/missing-password": "Enter your password.",
+        "auth/too-many-requests": "Too many attempts. Wait a little and try again.",
+        "auth/network-request-failed": "The network request failed. Check your internet connection."
+      };
+
+      return messages[error?.code] || "The account action failed. Please try again.";
+    }
+
+    function normalizeProgress(progress = {}) {
+      return {
+        lessonStep: Math.min(9, Math.max(0, Number(progress.lessonStep) || 0)),
+        lessonComplete: Boolean(progress.lessonComplete),
+        quizIndex: Math.min(8, Math.max(0, Number(progress.quizIndex) || 0)),
+        quizScore: Math.min(8, Math.max(0, Number(progress.quizScore) || 0)),
+        quizComplete: Boolean(progress.quizComplete),
+        bestQuizScore: Math.min(8, Math.max(0, Number(progress.bestQuizScore) || 0))
+      };
+    }
+
+    function mergeProgress(localProgress, remoteProgress) {
+      const local = normalizeProgress(localProgress);
+      const remote = normalizeProgress(remoteProgress);
+      const lessonStep = Math.max(local.lessonStep, remote.lessonStep);
+
+      let quizSource = local;
+      if (remote.quizComplete && !local.quizComplete) {
+        quizSource = remote;
+      } else if (remote.quizComplete === local.quizComplete && remote.quizIndex > local.quizIndex) {
+        quizSource = remote;
+      } else if (
+        remote.quizComplete === local.quizComplete &&
+        remote.quizIndex === local.quizIndex &&
+        remote.quizScore > local.quizScore
+      ) {
+        quizSource = remote;
+      }
+
+      return {
+        lessonStep,
+        lessonComplete: local.lessonComplete || remote.lessonComplete || lessonStep >= 9,
+        quizIndex: quizSource.quizComplete ? 8 : quizSource.quizIndex,
+        quizScore: quizSource.quizScore,
+        quizComplete: local.quizComplete || remote.quizComplete,
+        bestQuizScore: Math.max(
+          local.bestQuizScore,
+          remote.bestQuizScore,
+          local.quizComplete ? local.quizScore : 0,
+          remote.quizComplete ? remote.quizScore : 0
+        )
+      };
+    }
+
+    accountButton.addEventListener("click", openAuthDialog);
+    authClose.addEventListener("click", closeAuthDialog);
+    authOverlay.addEventListener("click", (event) => {
+      if (event.target === authOverlay) closeAuthDialog();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && authOverlay.classList.contains("open")) {
+        closeAuthDialog();
+      }
+    });
+    resumeProgressButton.addEventListener("click", () => {
+      closeAuthDialog();
+      document.querySelector("#quick-start").scrollIntoView({ behavior: "smooth" });
+    });
 
     function setStatus(message, type = "") {
       statusElement.textContent = message;
@@ -1891,6 +2357,8 @@
       }
     }
 
+    updateAccountUI(null);
+
     if (!configReady) {
       setStatus(
         "Firebase is not connected yet. Replace the placeholder firebaseConfig values in index.html.",
@@ -1909,6 +2377,143 @@
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const db = getFirestore(app);
+
+      async function saveProgressNow(progress) {
+        if (!currentUser || currentUser.isAnonymous) return;
+
+        const normalized = normalizeProgress(progress);
+        await setDoc(
+          doc(db, "progress", currentUser.uid),
+          {
+            ...normalized,
+            updatedAt: serverTimestamp()
+          },
+          { merge: true }
+        );
+      }
+
+      function saveProgress(progress) {
+        if (!currentUser || currentUser.isAnonymous) return;
+        window.clearTimeout(progressSaveTimer);
+        progressSaveTimer = window.setTimeout(async () => {
+          try {
+            await saveProgressNow(progress);
+            setAuthStatus("Progress saved.", "success");
+          } catch (error) {
+            console.error(error);
+            setAuthStatus("Progress could not be saved.", "error");
+          }
+        }, 350);
+      }
+
+      async function loadAndMergeProgress(user) {
+        if (!user || user.isAnonymous) return;
+
+        const reference = doc(db, "progress", user.uid);
+        const snapshot = await getDoc(reference);
+        const localProgress = window.getLearningProgress?.() || {};
+        const remoteProgress = snapshot.exists() ? snapshot.data() : {};
+        const merged = mergeProgress(localProgress, remoteProgress);
+
+        window.applyLearningProgress?.(merged);
+        await saveProgressNow(merged);
+        window.updateAccountProgressSummary(merged);
+      }
+
+      window.firebaseProgress = { saveProgress };
+
+      async function createAccount() {
+        const email = authEmail.value.trim();
+        const password = authPassword.value;
+
+        if (!email || !password) {
+          setAuthStatus("Enter an email address and password.", "error");
+          return;
+        }
+
+        setAuthStatus("Creating your account…");
+        signInButton.disabled = true;
+        createAccountButton.disabled = true;
+
+        try {
+          let credential;
+          if (auth.currentUser?.isAnonymous) {
+            const emailCredential = EmailAuthProvider.credential(email, password);
+            credential = await linkWithCredential(auth.currentUser, emailCredential);
+          } else {
+            credential = await createUserWithEmailAndPassword(auth, email, password);
+          }
+
+          currentUser = credential.user;
+          updateAccountUI(currentUser);
+          await loadAndMergeProgress(currentUser);
+          setAuthStatus("Account created. Your progress is now saved.", "success");
+        } catch (error) {
+          console.error(error);
+          setAuthStatus(readableAuthError(error), "error");
+        } finally {
+          signInButton.disabled = false;
+          createAccountButton.disabled = false;
+        }
+      }
+
+      async function logIn() {
+        const email = authEmail.value.trim();
+        const password = authPassword.value;
+
+        if (!email || !password) {
+          setAuthStatus("Enter your email address and password.", "error");
+          return;
+        }
+
+        setAuthStatus("Logging in…");
+        signInButton.disabled = true;
+        createAccountButton.disabled = true;
+
+        try {
+          const credential = await signInWithEmailAndPassword(auth, email, password);
+          currentUser = credential.user;
+          updateAccountUI(currentUser);
+          await loadAndMergeProgress(currentUser);
+          setAuthStatus("Logged in. Your saved progress is ready.", "success");
+        } catch (error) {
+          console.error(error);
+          setAuthStatus(readableAuthError(error), "error");
+        } finally {
+          signInButton.disabled = false;
+          createAccountButton.disabled = false;
+        }
+      }
+
+      async function resetPassword() {
+        const email = authEmail.value.trim();
+        if (!email) {
+          setAuthStatus("Enter your email address first.", "error");
+          authEmail.focus();
+          return;
+        }
+
+        try {
+          await sendPasswordResetEmail(auth, email);
+          setAuthStatus("Password reset email sent.", "success");
+        } catch (error) {
+          console.error(error);
+          setAuthStatus(readableAuthError(error), "error");
+        }
+      }
+
+      signInButton.addEventListener("click", logIn);
+      createAccountButton.addEventListener("click", createAccount);
+      resetPasswordButton.addEventListener("click", resetPassword);
+      signOutButton.addEventListener("click", async () => {
+        try {
+          await signOut(auth);
+          setAuthStatus("Logged out. Progress remains saved to your account.", "success");
+        } catch (error) {
+          console.error(error);
+          setAuthStatus("Could not log out. Try again.", "error");
+        }
+      });
 
       async function registerVisitor(user) {
         const visitorReference = doc(db, "visitors", user.uid);
@@ -1987,10 +2592,15 @@
         }
 
         currentUser = user;
+        updateAccountUI(user);
 
         try {
           await registerVisitor(user);
           await refreshStats(true);
+
+          if (!user.isAnonymous) {
+            await loadAndMergeProgress(user);
+          }
 
           if (pendingQuizResult) {
             const result = pendingQuizResult;
